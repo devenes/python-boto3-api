@@ -2,9 +2,10 @@
 
 Flask kütüphanesini kullanarak bir Python API geliştirin. Gelişterecek olduğunuz API, Boto3 kütüphanesini kullanarak, AWS'in EC2 servisi ile haberleşmeli ve listeleme, Instance başlatma ve Instance durdurma yeteneklerine ve aşağıda yer alan 3 endpointe sahip olmalı;
 
+-------
 
 - Endpoint-1: http://<api_host>:<api_port>/ec2/list
-- 
+
 Bu endpoint kullanıcıdan aşağıda yer alan parametreleri almalı;
 aws_access_key_id
 aws_secret_access_key
