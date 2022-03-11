@@ -31,10 +31,13 @@ def aws_list():
     instances = client.describe_instances()
     output = []
     for reservation in instances['Reservations']:
-        output.extend([{'id': instance['InstanceId'],
-                        "instance-type": instance['InstanceType'],
-                        "instance-state": instance['State']['Name']}
-                       for instance in reservation['Instances']])
+        output.extend([
+            {
+                'id': instance['InstanceId'],
+                "instance-type": instance['InstanceType'],
+                "instance-state": instance['State']['Name']
+            }
+            for instance in reservation['Instances']])
 
     print(output)
     return jsonify(output), 200
