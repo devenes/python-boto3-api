@@ -11,7 +11,7 @@ logging.basicConfig(
 )
 
 
-# Endpoint-1: http: // <api_host > : < api_port > /ec2/list
+# Endpoint: http://<api_host>:<api_port>/ec2/list
 @app.route('/ec2/list', methods=['POST', 'GET'])
 def aws_list():
     try:
