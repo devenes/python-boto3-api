@@ -104,4 +104,6 @@ def stop_ec2_instances():
 
 
 if __name__ == "__main__":
-    app.run(host=config["host"], port=config["port"], debug=True)
+    app.run(host=config["host"],
+            port=config["port"],
+            debug=False)
