@@ -1,4 +1,4 @@
-# Python-Boto3-API
+# Python Boto3 API
 
 Flask kütüphanesini kullanarak bir Python API geliştirin. Gelişterecek olduğunuz API, Boto3 kütüphanesini kullanarak, AWS'in EC2 servisi ile haberleşmeli ve listeleme, Instance başlatma ve Instance durdurma yeteneklerine ve aşağıda yer alan 3 endpointe sahip olmalı;
 
