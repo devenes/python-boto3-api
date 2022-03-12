@@ -1,12 +1,10 @@
-name: Docker Build And Push
-
+name: Dockerizing and Deployment
 on:
   push:
     branches:
       - "release"
-
 jobs:
-  docker:
+  Docker:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
