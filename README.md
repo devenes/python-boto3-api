@@ -2,13 +2,13 @@
 
 ![api](./readme/boto3.jpg)
 
-### Python API uses Flask and Boto3 libraries. It has the features of Instance listing, Instance start and Instance stop; it has 3 endpoints communicate with EC2 service on AWS.
+### Python API uses the Flask and Boto3 libraries. It has instance listing, instance start, instance stop, instance create and instance terminate features; It has 5 endpoints communicating with EC2 service on AWS.
 
 ---
 
 ## Create Instance
 
-You send a POST request to the `create` endpoint with the following parameters and it will create an instance with the given parameters.
+You send a POST request to the `create` endpoint with the following parameters and it will create Ubuntu EC2 instance. You create your EC2 Instance with the `region_name`, `KeyName` and `SecurityGroupId` parameters you send in the request.
 
 ```
 http://<api_host>:<api_port>/ec2/create
@@ -26,7 +26,7 @@ http://<api_host>:<api_port>/ec2/create
 
 ## List Instances
 
-You send a request to this endpoint by entering the following parameters, and you can list all the instances in your AWS account in the region you specify and their status.
+You send a GET request to the `list` endpoint by entering the following parameters, then you can list all the instances and their status in your AWS account in the region you specify.
 
 ```
 http://<api_host>:<api_port>/ec2/list
@@ -42,7 +42,7 @@ http://<api_host>:<api_port>/ec2/list
 
 ## Start Instance
 
-You send a request to this endpoint by entering the following parameters, and you can start the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `pending` and then to `running`.
+You send a POST request to the `start` endpoint by entering the following parameters, and you can start the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `pending` and then to `running`.
 
 ```
 http://<api_host>:<api_port>/ec2/start
@@ -59,7 +59,7 @@ http://<api_host>:<api_port>/ec2/start
 
 ## Stop Instance
 
-You send a request to this endpoint by entering the following parameters, and you can stop the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `stopping` and then to `stopped`.
+You send a POST request to the `stop` endpoint by entering the following parameters, and you can stop the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `stopping` and then to `stopped`.
 
 ```
 http://<api_host>:<api_port>/ec2/stop
@@ -76,7 +76,7 @@ http://<api_host>:<api_port>/ec2/stop
 
 ## Terminate Instance
 
-You send a request to this endpoint by entering the following parameters, and you can terminate the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `shutting-down` and then `terminated`.
+You send a POST request to the `terminate` endpoint by entering the following parameters, and you can terminate the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `shutting-down` and then `terminated`.
 
 ```
 http://<api_host>:<api_port>/ec2/terminate
