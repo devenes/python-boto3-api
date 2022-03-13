@@ -90,6 +90,7 @@ def stop_ec2_instances():
         return jsonify({'Message': "Unexpected Error occured", 'Error': str(error)}), 500
 
 
+# Endpoint: http://<api_host>:<api_port>/ec2/create
 @app.route("/ec2/create", methods=["POST"])
 def create_ec2_instance():
     try:
@@ -114,6 +115,7 @@ def create_ec2_instance():
         return jsonify({'Message': "Unexpected Error occured", 'Error': str(error)}), 500
 
 
+# Endpoint: http://<api_host>:<api_port>/ec2/terminate
 @app.route("/ec2/terminate", methods=["POST"])
 def terminate_ec2_instance():
     try:
