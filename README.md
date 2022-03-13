@@ -1,56 +1,57 @@
 # Python Boto3 API
 
-Flask kütüphanesini kullanarak bir Python API geliştirin. Gelişterecek olduğunuz API, Boto3 kütüphanesini kullanarak, AWS'in EC2 servisi ile haberleşmeli ve listeleme, Instance başlatma ve Instance durdurma yeteneklerine ve aşağıda yer alan 3 endpointe sahip olmalı;
+![api](./readme/boto3.jpg)
+
+### Python API uses Flask and Boto3 libraries. It has the features of Instance listing, Instance start and Instance stop; it has 3 endpoints communicate with EC2 service on AWS.
 
 ---
 
-- Endpoint-1: http://<api_host>:<api_port>/ec2/list
+## List Instances
 
-Bu endpoint kullanıcıdan aşağıda yer alan parametreleri almalı;
-aws_access_key_id
-aws_secret_access_key
-region_name
-Parametreler kullanıcıdan 3 farklı yöntem ile alınabilir;
-Query Parameter
-URL Parameter
-JSON Body
-Yukarıda yer alan 3 yöntem biri ile kullanıcıdan bu parametreleri almanız yeterli olacaktır. Kullanıcı, bu endpointe ilgili parametreler ile istek atarak, iletmiş olduğu region'da var olan EC2 instancelara ait InstanceId değerlerinin bir listesini alabilmeli.
+You send a request to this endpoint by entering the following parameters, and you can list all the instances in your AWS account in the region you specify and their status.
 
-- Endpoint-2: http://<api_host>:<api_port>/ec2/start
+```
+http://<api_host>:<api_port>/ec2/list
+```
 
-Bu endpoint kullanıcıdan aşağıda yer alan parametreleri almalı;
-aws_access_key_id
-aws_secret_access_key
-region_name
-InstanceId
-Parametreler kullanıcıdan 3 farklı yöntem ile alınabilir;
-Query Parameter
-URL Parameter
-JSON Body
-Yukarıda yer alan 3 yöntem biri ile kullanıcıdan bu parametreleri almanız yeterli olacaktır. Kullanıcı, bu endpointe ilgili parametreler ile istek atarak, iletmiş olduğu InstanceId değerine sahip olan EC2 instance'ı başlatabilmelidir.
+| Parameter               | Type     | Description           |
+| :---------------------- | :------- | :-------------------- |
+| `aws_access_key_id`     | `string` | AWS Access Key ID     |
+| `aws_secret_access_key` | `string` | AWS Secret Access Key |
+| `region_name`           | `string` | AWS Region Name       |
 
-- Endpoint-3: http://<api_host>:<api_port>/ec2/stop
+---
 
-Bu endpoint kullanıcıdan aşağıda yer alan parametreleri almalı;
-aws_access_key_id
-aws_secret_access_key
-region_name
-InstanceId
-Parametreler kullanıcıdan 3 farklı yöntem ile alınabilir;
-Query Parameter
-URL Parameter
-JSON Body
-Yukarıda yer alan 3 yöntemden biri ile kullanıcıdan bu parametreleri almanız yeterli olacaktır. Kullanıcı, bu endpointe ilgili parametreler ile istek atarak, iletmiş olduğu InstanceId değerine sahip olan EC2 instance'ı durdurabilmelidir.
+## Start Instance
 
-## Opsiyonel
+You send a request to this endpoint by entering the following parameters, and you can start the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `running`.
 
-Burada yer alan taskleri gerçekleştirmeniz ekstra puan almanızı sağlayacaktır.
-Uygun HTTP metotları kullanarak, farklı metotlar ile istek atılmasını engellemek.
-API host ve port bilgilerini harici bir config dosyasından okumak.
-API'a farklı yöntemler ile parametre alabilme yeteneği kazandırmak.
-Kullanıcıya detaylı bilgi içeren JSON formatında response dönebilmek.
-API response status codelarını düzenleyerek ilgili durumlarda doğru status code dönebilmek.
-Uygulamanızı geliştirirken kullanmış olduğunuz Python paketlerini içeren bir requirements.txt dosyası oluşturmak.
-Log dosyası oluşturmak.
-Try-Except yapısını kullanarak hata oluşabilecek durumları yakalayarak, karşılaşılan hataları kullanıcıya response olarak dönebilmek.
-Kaynak kodları bir versiyon kontrol sistemi uygulamasında (Github, Gitlab etc.) yayınlamak.
+```
+http://<api_host>:<api_port>/ec2/start
+```
+
+| Parameter               | Type     | Description           |
+| :---------------------- | :------- | :-------------------- |
+| `aws_access_key_id`     | `string` | AWS Access Key ID     |
+| `aws_secret_access_key` | `string` | AWS Secret Access Key |
+| `region_name`           | `string` | AWS Region Name       |
+| `instance_id`           | `string` | Instance ID Number    |
+
+---
+
+## Stop Instance
+
+You send a request to this endpoint by entering the following parameters, and you can stop the instance you specified with `instance_id`, in the region you specified with `region_name` and the status of the instance will be changed to `stopped`.
+
+```
+http://<api_host>:<api_port>/ec2/stop
+```
+
+| Parameter               | Type     | Description           |
+| :---------------------- | :------- | :-------------------- |
+| `aws_access_key_id`     | `string` | AWS Access Key ID     |
+| `aws_secret_access_key` | `string` | AWS Secret Access Key |
+| `region_name`           | `string` | AWS Region Name       |
+| `instance_id`           | `string` | Instance ID Number    |
+
+---
