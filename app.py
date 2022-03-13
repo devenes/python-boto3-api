@@ -23,7 +23,7 @@ def get_aws_client(request):
 
 
 # Endpoint: http://<api_host>:<api_port>/ec2/list
-@ app.route('/ec2/list', methods=['GET'])
+@app.route('/ec2/list', methods=['GET'])
 def aws_list():
     try:
         client = get_aws_client(request)
