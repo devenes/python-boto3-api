@@ -23,7 +23,7 @@ def get_aws_client(request):
 
 
 # Endpoint: http://<api_host>:<api_port>/ec2/list
-@ app.route('/ec2/list', methods=['GET'])
+@app.route('/ec2/list', methods=['GET'])
 def aws_list():
     try:
         client = get_aws_client(request)
@@ -90,7 +90,48 @@ def stop_ec2_instances():
         return jsonify({'Message': "Unexpected Error occured", 'Error': str(error)}), 500
 
 
+@app.route("/ec2/create", methods=["POST"])
+def create_ec2_instance():
+    try:
+        client = get_aws_client(request)
+        KeyName = request.args.get("KeyName")
+        SecurityGroupIds = request.args.get("SecurityGroupId")
+
+        response = client.run_instances(
+            ImageId='ami-0fb653ca2d3203ac1',  # Ubuntu Server 20.04, 64-bit x86
+            InstanceType='t2.micro',  # 1 vCPU, 1 GB RAM (Free tier ^^)
+            MinCount=1,
+            MaxCount=1,
+            KeyName=KeyName,
+            SecurityGroupIds=[SecurityGroupIds]
+        )
+
+        print(response)
+        return jsonify(response["Instances"][0]), 200
+
+    except Exception as error:
+        print(str(error))
+        return jsonify({'Message': "Unexpected Error occured", 'Error': str(error)}), 500
+
+
+@app.route("/ec2/terminate", methods=["POST"])
+def terminate_ec2_instance():
+    try:
+        client = get_aws_client(request)
+        InstanceId = request.args.get("InstanceId")
+
+        response = client.terminate_instances(
+            InstanceIds=[InstanceId]
+        )
+
+        return jsonify(response["TerminatingInstances"][0]), 200
+
+    except Exception as error:
+        print(str(error))
+        return jsonify({'Message': "Unexpected Error occured", 'Error': str(error)}), 500
+
+
 if __name__ == "__main__":
     app.run(host=config["host"],
             port=config["port"],
-            debug=False)
+            debug=True)
