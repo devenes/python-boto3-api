@@ -134,4 +134,4 @@ def terminate_ec2_instance():
 if __name__ == "__main__":
     app.run(host=config["host"],
             port=config["port"],
-            debug=True)
+            debug=False)
