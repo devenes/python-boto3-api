@@ -1,8 +1,10 @@
-# Python Boto3 API
+# Python Boto3 API for AWS
 
 ![api](./readme/boto3.jpg)
 
-### Python API uses the Flask and Boto3 libraries. It has instance listing, instance start, instance stop, instance create and instance terminate features; It has 5 endpoints communicating with EC2 service on AWS.
+## Description
+
+Python API uses the Flask and Boto3 libraries. It has instance listing, instance start, instance stop, instance create and instance terminate features; It has 5 endpoints communicating with EC2 service on AWS.
 
 ---
 
