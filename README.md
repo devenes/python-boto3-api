@@ -8,14 +8,16 @@ Python API uses the Flask and Boto3 libraries. It has instance listing, instance
 
 ---
 
-## 📝 Features
+## 📝 Contents
 
-- [Create a new instance](#create_instance)
-- [List instances](#list_instance)
-- [Start an instance](#start_instance)
-- [Stop an instance](#stop_instance)
-- [Terminate an instance](#terminate_instance)
-
+- [Python Boto3 API for AWS](#python-boto3-api-for-aws)
+  - [Description](#description)
+  - [📝 Contents](#-contents)
+  - [Create Instance <a name = "create_instance"></a>](#create-instance-)
+  - [List Instances <a name = "list_instance"></a>](#list-instances-)
+  - [Start Instance <a name = "start_instance"></a>](#start-instance-)
+  - [Stop Instance <a name = "stop_instance"></a>](#stop-instance-)
+  - [Terminate Instance <a name = "terminate_instance"></a>](#terminate-instance-)
 
 ## Create Instance <a name = "create_instance"></a>
 
